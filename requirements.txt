@@ -3,5 +3,4 @@ pandas==2.2.2
 python==3.12.4
 pickleshare==0.7.5
 requests==2.32.2
-toml==0.10.2
 scikit-learn==1.4.2
