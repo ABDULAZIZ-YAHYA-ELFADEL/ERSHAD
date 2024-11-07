@@ -60,9 +60,9 @@ with tab3:
         #-------------------------------------------------------------------
         #bt6=st.number_input('Hemoglobin_A1c_level?', 0, 9)
         #--------------------------------------------------------------------
-        bt7=st.text_input('blood glucose level?',80,300)
+        bt7=st.number_input('blood glucose level?',80,300)
         #--------------------------------------------------------------------
-        bt5=st.text_input('Body mass index?',10,95)
+        bt5=st.number_input('Body mass index?',10.01,95.69)
         #--------------------------------------------------------------------
         st.write("\n")
         st.write("\n")
