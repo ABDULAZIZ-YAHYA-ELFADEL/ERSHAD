@@ -26,7 +26,8 @@ tab2.info('###### 6-Smoking History: Is considered a risk factor for diabetes an
 tab2.info('###### 7-Blood Glucose Level: Refers to the amount of glucose in the blood stream at a given time. high blood glucose levels are a key indicator of diabetes')
 #tab2.info('###### 8-HBA1C Level: Hemoglobin A1c level is a measure of a persons average blood suger level over the :red[Past 2-3] months. mostly more than :red[6.5%] of HbA1c level indicates diabetes')
 #--------------------------------------------------------------------------
-
+tab3.markdown('### :red[🚩 All Fields Are Required: ]')
+tab3.write("\n")
 with tab3:
     col1,col2,= st.columns(2, gap="large")
     with col1:
@@ -70,7 +71,7 @@ with tab3:
     df1=pd.DataFrame({'gender':gender2, 'smoking_history':smoking_history2, 'age':bt1,
      'hypertension':hypertension2, 'heart_disease':heart_disease2, 'bmi':bt5,
        'blood_glucose_level':bt7,},index=[0])
-    show= st.checkbox("I Shower, I Fill All Field Correct")
+    show= st.checkbox("Make sure you have filled in all fields")
     tab3.write("\n")
     tab3.write("\n")
     tab3.write("\n")
