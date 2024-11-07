@@ -7,7 +7,7 @@ data1= pickle.load(open("Models/diabetes_disease.sav",'rb'))
 st.sidebar.info(" ### :blue[Your medical guide to detecting diseases] 🧐")
 tab1, tab2, tab3= st.tabs(['| About Diabetes |','| About Model |','| Testing For Diabetes |'])
 
-tab1.image('img/19.jpg', width=350)
+tab1.image('img/19.jpg', width=300)
 
 tab1.markdown("##### Diabets is a chronic disease that occurs either when the pancreas dose not produce enough insulin or when the body cannot effectively use the insulin it produces. Insulin is a hormone that regulates blood glucose.")
 tab1.info('##### Hyperglycaemia, also called raised blood glucose or raised blood sugar, is a common effect of uncontrolled diabetes and over time leads to serious damage to many of the bodys systems, especially the nerves and blood vessels.')  
