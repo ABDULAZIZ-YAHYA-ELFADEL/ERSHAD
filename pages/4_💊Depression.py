@@ -27,9 +27,13 @@ tab2.info('###### 7-Feeling of guilt: Do you feel of gilt?')
 tab2.info('###### 8-Problems of bonding with people: Do you have problems establishing relationships with people?')
 tab2.info('###### 9-Suicide attempt: Do you have previous attempts to commit suicide?')
 #--------------------------------------------------------------------------
-tab3.markdown('### :red[🚩 This test is valid for people who have these  symptoms for a long period of time, one or two months.]')
+tab3.warning('### 🏴 This test is valid for people who have these  symptoms for a long period of time, one or two months.')
 tab3.write("\n")
-with tab3.form('form'):
+tab3.write("\n")
+tab3.write("\n")
+tab3.markdown('### :red[🚩 All Fields Are Required: ]')
+tab3.write("\n")
+with tab3:
     col1,col2,col3,= st.columns(3, gap="small")
     with col1:
         Age=['25-30', '30-35', '35-40', '40-45', '45-50']
@@ -96,82 +100,87 @@ with tab3.form('form'):
      'Trouble sleeping at night':Trouble_sleeping2, 'Problems concentrating or making decision':Problems_concentrating2,
       'loss of appetite':loss_of_appetite2, 'Feeling of guilt':Feeling_guilt2, 'Problems of bonding with people':Problems_of_bonding2,
       'Suicide attempt':Suicide_attempt2,},index=[0])
-    bt_predict=st.form_submit_button("Predict...❗")
-if bt_predict:
-        with st.spinner('Processing...🔄'):
-            time.sleep(2)
-            result=data1.predict(df1)
-            if result == 0:
-                tab3.header(' :blue[Patient Report :]')
-                tab3.subheader(' Inquiry About  Depression ')
-                c1,= st.columns(1)
-                #_______
-                tab3.markdown("####  Age Group :")
-                tab3.warning(bt)
-                #_______
-                tab3.markdown("####  Feeling sad ? ")
-                tab3.warning(bt2)
-                #_______
-                tab3.markdown('####  Irritable towards people ?')
-                tab3.warning(bt3)
-                #_______
-                tab3.markdown('####  Trouble sleeping at night ?')
-                tab3.warning(bt4)
-                #_______
-                tab3.markdown('#### Problems concentrating or making decision ? ')
-                tab3.warning(bt5)
-                #_______
-                tab3.markdown('####  loss of appetite ?')
-                tab3.warning(bt6)
-                #_______
-                tab3.markdown('####  Feeling of guilt ?')
-                tab3.warning(bt7)
-                #_______
-                tab3.markdown('####  Problems of bonding with people ?')
-                tab3.warning(bt8)
-                #_______
-                tab3.markdown('#### Suicide attempt ?')
-                tab3.warning(bt9)
-                #_______
-                tab3.markdown('#### Degree Of Risk :')
-                tab3.success("LOW")
-                #_______
-                tab3.markdown('#### Query Result :')
-                tab3.success("The patient is healthy, take care of  yourself.")
-            else:
-                tab3.header(' :blue[Patient Report :]')
-                tab3.subheader(' Inquiry About  Depression ')
-                c1,= st.columns(1)
-                #_______
-                tab3.markdown("####  Age Group :")
-                tab3.info(bt)
-                #_______
-                tab3.markdown("####  Feeling sad ? ")
-                tab3.info(bt2)
-                #_______
-                tab3.markdown('####  Irritable towards people ?')
-                tab3.info(bt3)
-                #_______
-                tab3.markdown('####  Trouble sleeping at night ?')
-                tab3.info(bt4)
-                #_______
-                tab3.markdown('#### Problems concentrating or making decision ? ')
-                tab3.info(bt5)
-                #_______
-                tab3.markdown('####  loss of appetite ?')
-                tab3.info(bt6)
-                #_______
-                tab3.markdown('####  Feeling of guilt ?')
-                tab3.info(bt7)
-                #_______
-                tab3.markdown('####  Problems of bonding with people ?')
-                tab3.info(bt8)
-                #_______
-                tab3.markdown('#### Suicide attempt ?')
-                tab3.info(bt9)
-                #_______
-                tab3.markdown('#### Degree Of Risk : ')
-                tab3.error("High")
-                #_______
-                tab3.markdown('#### Query Result : ')
-                tab3.error("The patient may requer attention, please go to the doctor.")
+    show= st.checkbox("Make sure you have filled in all fields")
+    tab3.write("\n")
+    tab3.write("\n")
+    tab3.write("\n")
+    if show:
+        bt_predict=st.button("Predict...❗")
+        if bt_predict:
+            with st.spinner('Processing...🔄'):
+                time.sleep(2)
+                result=data1.predict(df1)
+                if result == 0:
+                    tab3.header(' :blue[Patient Report :]')
+                    tab3.subheader(' Inquiry About  Depression ')
+                    c1,= st.columns(1)
+                    #_______
+                    tab3.markdown("####  Age Group :")
+                    tab3.warning(bt)
+                    #_______
+                    tab3.markdown("####  Feeling sad ? ")
+                    tab3.warning(bt2)
+                    #_______
+                    tab3.markdown('####  Irritable towards people ?')
+                    tab3.warning(bt3)
+                    #_______
+                    tab3.markdown('####  Trouble sleeping at night ?')
+                    tab3.warning(bt4)
+                    #_______
+                    tab3.markdown('#### Problems concentrating or making decision ? ')
+                    tab3.warning(bt5)
+                    #_______
+                    tab3.markdown('####  loss of appetite ?')
+                    tab3.warning(bt6)
+                    #_______
+                    tab3.markdown('####  Feeling of guilt ?')
+                    tab3.warning(bt7)
+                    #_______
+                    tab3.markdown('####  Problems of bonding with people ?')
+                    tab3.warning(bt8)
+                    #_______
+                    tab3.markdown('#### Suicide attempt ?')
+                    tab3.warning(bt9)
+                    #_______
+                    tab3.markdown('#### Degree Of Risk :')
+                    tab3.success("LOW")
+                    #_______
+                    tab3.markdown('#### Query Result :')
+                    tab3.success("The patient is healthy, take care of  yourself.")
+                else:
+                    tab3.header(' :blue[Patient Report :]')
+                    tab3.subheader(' Inquiry About  Depression ')
+                    c1,= st.columns(1)
+                    #_______
+                    tab3.markdown("####  Age Group :")
+                    tab3.info(bt)
+                    #_______
+                    tab3.markdown("####  Feeling sad ? ")
+                    tab3.info(bt2)
+                    #_______
+                    tab3.markdown('####  Irritable towards people ?')
+                    tab3.info(bt3)
+                    #_______
+                    tab3.markdown('####  Trouble sleeping at night ?')
+                    tab3.info(bt4)
+                    #_______
+                    tab3.markdown('#### Problems concentrating or making decision ? ')
+                    tab3.info(bt5)
+                    #_______
+                    tab3.markdown('####  loss of appetite ?')
+                    tab3.info(bt6)
+                    #_______
+                    tab3.markdown('####  Feeling of guilt ?')
+                    tab3.info(bt7)
+                    #_______
+                    tab3.markdown('####  Problems of bonding with people ?')
+                    tab3.info(bt8)
+                    #_______
+                    tab3.markdown('#### Suicide attempt ?')
+                    tab3.info(bt9)
+                    #_______
+                    tab3.markdown('#### Degree Of Risk : ')
+                    tab3.error("High")
+                    #_______
+                    tab3.markdown('#### Query Result : ')
+                    tab3.error("The patient may requer attention, please go to the doctor.")
