@@ -27,9 +27,13 @@ tab2.info('###### 8-ST_Slope: The slope oF the peak exercise ST segment(Downslop
 tab2.info('###### 9-Max HR: Maximum heart rate achieved.')  
 tab2.info('###### 10_Resting Blood Pressure : The person resting blood pressure(:red[mm Hg])')
 #------------------------------------------------------------------------------
-tab3.markdown('### :red[🚩 This test requires an ECG examination. ]')
+tab3.warning('### :red[🏴 This test requires an ECG examination. ]')
 tab3.write("\n")
-with tab3.form('form'):
+tab3.write("\n")
+tab3.write("\n")
+tab3.markdown('### :red[🚩 All Fields Are Required: ]')
+tab3.write("\n")
+with tab3:
     col1,col2,col3,= st.columns(3, gap="large")
     with col1:
         sex=['Male', 'Female']
@@ -87,95 +91,100 @@ with tab3.form('form'):
     df=pd.DataFrame({'Sex':sex2,'ChestPainType':chestpain2,
     'RestingECG':restingECG2,'ExerciseAngina':ExerciseAngina2,
     'ST_Slope':s_slop2,'Age':bt5,'RestingBP':bt6,
-    'Cholesterol':bt7,'FastingBS':Fasting_BS2,'MaxHR':bt9,},index=[0])      
-    bt_predict=st.form_submit_button("Predict...❗")
-if bt_predict:
-    with st.spinner('Processing...🔄'):
-        time.sleep(2)
-        result=data.predict(df)
-        if result == 0: 
-            tab3.header(' :blue[Patient Report :] ')
-            tab3.subheader('Inquiry About Heart Disease')
-            c1,= st.columns(1)
-            #_______
-            tab3.markdown("#### Sex :")
-            tab3.warning(bt)
-            #_______
-            tab3.markdown("#### Age :")
-            tab3.warning(bt5)
-            #_______
-            tab3.markdown('#### Chest Pain Type :')
-            tab3.warning(bt1)
-            #_______
-            tab3.markdown('#### Resting Electrocardiographic Results :')
-            tab3.warning(bt2)
-            #_______
-            tab3.markdown('#### ST_Slope :')
-            tab3.warning(bt3)
-            #_______
-            tab3.markdown('#### Exercise Angina :')
-            tab3.warning(bt4)
-            #_______
-            tab3.markdown('#### Resting Blood Pressure :')
-            tab3.warning(bt6)
-            #_______
-            tab3.markdown('#### Cholesterol :')
-            tab3.warning(bt7)
-            #_______
-            tab3.markdown('#### Fasting Blood Suger ?')
-            tab3.warning(bt8)
-            #_______
-            tab3.markdown('#### Maximum Heart Rate :')
-            tab3.warning(bt9)
-            #_______
-            #tab3.markdown('#### Old peak :')
-            #tab3.warning(bt10)
-            #_______
-            tab3.markdown('#### Degree Of Risk :')
-            tab3.success("LOW")
-            #_______
-            tab3.markdown('#### Query Result : ')
-            tab3.success("The patient is healthy, take care of yourself.")
-        else:
-            tab3.header(':blue[Patient Report :]')
-            tab3.subheader(' Inquiry About Heart Disease')
-            c1,= st.columns(1)
-            #_______
-            tab3.markdown("#### Sex :")
-            tab3.info(bt)
-            #_______
-            tab3.markdown("#### Age :")
-            tab3.info(bt5)
-            #_______
-            tab3.markdown('#### Chest Pain Type :')
-            tab3.info(bt1)
-            #_______
-            tab3.markdown('#### Resting Electrocardiographic Results :')
-            tab3.info(bt2)
-            #_______
-            tab3.markdown('#### ST_Slope :')
-            tab3.info(bt3)
-            #_______
-            tab3.markdown('#### Exercise Angina :')
-            tab3.info(bt4)
-            #_______
-            tab3.markdown('#### Resting Blood Pressure :')
-            tab3.info(bt6)
-            #_______
-            tab3.markdown('#### Cholesterol :')
-            tab3.info(bt7)
-            #_______
-            tab3.markdown('#### Fasting Blood Suger ?')
-            tab3.info(bt8)
-            #_______
-            tab3.markdown('#### Maximum Heart Rate :')
-            tab3.info(bt9)
-            #_______
-            #tab3.markdown('#### Old peak :')
-            #tab3.info(bt10)
-            #_______
-            tab3.markdown('#### Degree Of Risk :')
-            tab3.error("High")
-            #_______
-            tab3.markdown('#### Query Result :')
-            tab3.error("The patient may requer attention, please go to the doctor.")
+    'Cholesterol':bt7,'FastingBS':Fasting_BS2,'MaxHR':bt9,},index=[0])
+show= st.checkbox("Make sure you have filled in all fields")
+tab3.write("\n")
+tab3.write("\n")
+tab3.write("\n")
+if show:
+    bt_predict=st.button("Predict...❗")
+        if bt_predict:
+            with st.spinner('Processing...🔄'):
+                time.sleep(2)
+                result=data.predict(df)
+                if result == 0: 
+                    tab3.header(' :blue[Patient Report :] ')
+                    tab3.subheader('Inquiry About Heart Disease')
+                    c1,= st.columns(1)
+                    #_______
+                    tab3.markdown("#### Sex :")
+                    tab3.warning(bt)
+                    #_______
+                    tab3.markdown("#### Age :")
+                    tab3.warning(bt5)
+                    #_______
+                    tab3.markdown('#### Chest Pain Type :')
+                    tab3.warning(bt1)
+                    #_______
+                    tab3.markdown('#### Resting Electrocardiographic Results :')
+                    tab3.warning(bt2)
+                    #_______
+                    tab3.markdown('#### ST_Slope :')
+                    tab3.warning(bt3)
+                    #_______
+                    tab3.markdown('#### Exercise Angina :')
+                    tab3.warning(bt4)
+                    #_______
+                    tab3.markdown('#### Resting Blood Pressure :')
+                    tab3.warning(bt6)
+                    #_______
+                    tab3.markdown('#### Cholesterol :')
+                    tab3.warning(bt7)
+                    #_______
+                    tab3.markdown('#### Fasting Blood Suger ?')
+                    tab3.warning(bt8)
+                    #_______
+                    tab3.markdown('#### Maximum Heart Rate :')
+                    tab3.warning(bt9)
+                    #_______
+                    #tab3.markdown('#### Old peak :')
+                    #tab3.warning(bt10)
+                    #_______
+                    tab3.markdown('#### Degree Of Risk :')
+                    tab3.success("LOW")
+                    #_______
+                    tab3.markdown('#### Query Result : ')
+                    tab3.success("The patient is healthy, take care of yourself.")
+                else:
+                    tab3.header(':blue[Patient Report :]')
+                    tab3.subheader(' Inquiry About Heart Disease')
+                    c1,= st.columns(1)
+                    #_______
+                    tab3.markdown("#### Sex :")
+                    tab3.info(bt)
+                    #_______
+                    tab3.markdown("#### Age :")
+                    tab3.info(bt5)
+                    #_______
+                    tab3.markdown('#### Chest Pain Type :')
+                    tab3.info(bt1)
+                    #_______
+                    tab3.markdown('#### Resting Electrocardiographic Results :')
+                    tab3.info(bt2)
+                    #_______
+                    tab3.markdown('#### ST_Slope :')
+                    tab3.info(bt3)
+                    #_______
+                    tab3.markdown('#### Exercise Angina :')
+                    tab3.info(bt4)
+                    #_______
+                    tab3.markdown('#### Resting Blood Pressure :')
+                    tab3.info(bt6)
+                    #_______
+                    tab3.markdown('#### Cholesterol :')
+                    tab3.info(bt7)
+                    #_______
+                    tab3.markdown('#### Fasting Blood Suger ?')
+                    tab3.info(bt8)
+                    #_______
+                    tab3.markdown('#### Maximum Heart Rate :')
+                    tab3.info(bt9)
+                    #_______
+                    #tab3.markdown('#### Old peak :')
+                    #tab3.info(bt10)
+                    #_______
+                    tab3.markdown('#### Degree Of Risk :')
+                    tab3.error("High")
+                    #_______
+                    tab3.markdown('#### Query Result :')
+                    tab3.error("The patient may requer attention, please go to the doctor.")
