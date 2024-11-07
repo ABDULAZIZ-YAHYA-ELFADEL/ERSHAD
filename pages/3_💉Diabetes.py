@@ -27,7 +27,7 @@ tab2.info('###### 7-Blood Glucose Level: Refers to the amount of glucose in the 
 #tab2.info('###### 8-HBA1C Level: Hemoglobin A1c level is a measure of a persons average blood suger level over the :red[Past 2-3] months. mostly more than :red[6.5%] of HbA1c level indicates diabetes')
 #--------------------------------------------------------------------------
 
-with tab3.form('form'):
+with tab3:
     col1,col2,= st.columns(2, gap="large")
     with col1:
         gender=['Male', 'Female']
@@ -59,9 +59,9 @@ with tab3.form('form'):
         #-------------------------------------------------------------------
         #bt6=st.number_input('Hemoglobin_A1c_level?', 0, 9)
         #--------------------------------------------------------------------
-        bt7=st.text_input('blood glucose level?')
+        bt7=st.text_input('blood glucose level?',80,300)
         #--------------------------------------------------------------------
-        bt5=st.text_input('Body mass index?')
+        bt5=st.text_input('Body mass index?',10.00,95.69)
         #--------------------------------------------------------------------
         st.write("\n")
         st.write("\n")
@@ -70,77 +70,81 @@ with tab3.form('form'):
     df1=pd.DataFrame({'gender':gender2, 'smoking_history':smoking_history2, 'age':bt1,
      'hypertension':hypertension2, 'heart_disease':heart_disease2, 'bmi':bt5,
        'blood_glucose_level':bt7,},index=[0])
-    bt_predict=st.form_submit_button("Predict...❗")
-if bt_predict:
-        with st.spinner('Processing...🔄'):
-            time.sleep(2)
-            result=data1.predict(df1)
-
-            if result == 0:
-                tab3.header(' :blue[Patient Report :]')
-                tab3.subheader(' Inquiry About  Diabetes ')
-                c1,= st.columns(1)
-                #_______
-                tab3.markdown("####  Sex :")
-                tab3.warning(bt)
-                #_______
-                tab3.markdown("####  Age :")
-                tab3.warning(bt1)
-                #_______
-                tab3.markdown('####  hypertension ?')
-                tab3.warning(bt2)
-                #_______
-                tab3.markdown('####  heart_disease ?')
-                tab3.warning(bt3)
-                #_______
-                tab3.markdown('####  smoking_history :')
-                tab3.warning(bt4)
-                #_______
-                tab3.markdown('#### Body Mass Index : ')
-                tab3.warning(bt5)
-                #_______
-                #tab3.markdown('####  Hemoglobin A1c_level :')
-                #tab3.warning(bt6)
-                #_______
-                tab3.markdown('####  blood_glucose_level :')
-                tab3.warning(bt7)
-                #_______
-                tab3.markdown('#### Degree Of Risk :')
-                tab3.success("LOW")
-                #_______
-                tab3.markdown('#### Query Result :')
-                tab3.success("The patient is healthy, take care of yourself.")
-            else:
-                tab3.header(':blue[Patient Report :]')
-                tab3.subheader(' Inquiry About Diabetes ')
-                c1,= st.columns(1)
-                #_______
-                tab3.markdown("#### Sex :")
-                tab3.info(bt)
-                #_______
-                tab3.markdown("####  Age :")
-                tab3.info(bt1)
-                #_______
-                tab3.markdown('####  hypertension ?')
-                tab3.info(bt2)
-                #_______
-                tab3.markdown('####  heart_disease ?')
-                tab3.info(bt3)
-                #_______
-                tab3.markdown('####  smoking_history :')
-                tab3.info(bt4)
-                #_______
-                tab3.markdown('####  Body Mass Index :')
-                tab3.info(bt5)
-                #_______
-                #tab3.markdown('####  Hemoglobin A1c_level :')
-                #tab3.info(bt6)
-                #_______
-                tab3.markdown('#### blood_glucose_level :')
-                tab3.info(bt7)
-                #_______
-                tab3.markdown('#### Degree Of Risk : ')
-                tab3.error("High")
-                #_______
-                tab3.markdown('#### Query Result : ')
-                tab3.error("The patient may requer attention, please go to the doctor.")
+    show= st.checkbox("I Shower, I Fill All Field Correct")
+    tab3.write("\n")
+    tab3.write("\n")
+    tab3.write("\n")
+    if show:
+        bt_predict=st.button("Predict...❗")
+        if bt_predict:
+            with st.spinner('Processing...🔄'):
+                time.sleep(2)
+                result=data1.predict(df1)
+                if result == 0:
+                    tab3.header(' :blue[Patient Report :]')
+                    tab3.subheader(' Inquiry About  Diabetes ')
+                    c1,= st.columns(1)
+                    #_______
+                    tab3.markdown("####  Sex :")
+                    tab3.warning(bt)
+                    #_______
+                    tab3.markdown("####  Age :")
+                    tab3.warning(bt1)
+                    #_______
+                    tab3.markdown('####  hypertension ?')
+                    tab3.warning(bt2)
+                    #_______
+                    tab3.markdown('####  heart_disease ?')
+                    tab3.warning(bt3)
+                    #_______
+                    tab3.markdown('####  smoking_history :')
+                    tab3.warning(bt4)
+                    #_______
+                    tab3.markdown('#### Body Mass Index : ')
+                    tab3.warning(bt5)
+                    #_______
+                    #tab3.markdown('####  Hemoglobin A1c_level :')
+                    #tab3.warning(bt6)
+                    #_______
+                    tab3.markdown('####  blood_glucose_level :')
+                    tab3.warning(bt7)
+                    #_______
+                    tab3.markdown('#### Degree Of Risk :')
+                    tab3.success("LOW")
+                    #_______
+                    tab3.markdown('#### Query Result :')
+                    tab3.success("The patient is healthy, take care of yourself.")
+                else:
+                    tab3.header(':blue[Patient Report :]')
+                    tab3.subheader(' Inquiry About Diabetes ')
+                    c1,= st.columns(1)
+                    #_______
+                    tab3.markdown("#### Sex :")
+                    tab3.info(bt)
+                    #_______
+                    tab3.markdown("####  Age :")
+                    tab3.info(bt1)
+                    #_______
+                    tab3.markdown('####  hypertension ?')
+                    tab3.info(bt2)
+                    #_______
+                    tab3.markdown('####  heart_disease ?')
+                    tab3.info(bt3)
+                    #_______
+                    tab3.markdown('####  smoking_history :')
+                    tab3.info(bt4)
+                    #_______
+                    tab3.markdown('####  Body Mass Index :')
+                    tab3.info(bt5)
+                    #_______
+                    #tab3.markdown('####  Hemoglobin A1c_level :')
+                    #tab3.info(bt6)
+                    #_______
+                    tab3.markdown('#### blood_glucose_level :')
+                    tab3.info(bt7)
+                    #_______
+                    tab3.markdown('#### Degree Of Risk : ')
+                    tab3.error("High")
+                    #_______
+                    tab3.markdown('#### Query Result : ')
+                    tab3.error("The patient may requer attention, please go to the doctor.")
