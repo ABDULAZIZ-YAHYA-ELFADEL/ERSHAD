@@ -27,7 +27,7 @@ tab2.info('###### 8-ST_Slope: The slope oF the peak exercise ST segment(Downslop
 tab2.info('###### 9-Max HR: Maximum heart rate achieved.')  
 tab2.info('###### 10_Resting Blood Pressure : The person resting blood pressure(:red[mm Hg])')
 #------------------------------------------------------------------------------
-tab3.warning('### :red[🏴 This test requires an ECG examination. ]')
+tab3.warning('### 🏴 This test requires an ECG examination. ')
 tab3.write("\n")
 tab3.write("\n")
 tab3.write("\n")
